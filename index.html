@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Фундамент фінансової свободи | Софія Фединяк</title>
+    
+    <!-- Fonts: Arimo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Intl-Tel-Input CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/css/intlTelInput.css">
+    
+    <!-- Swiper CSS (Slider) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <!-- Meta Pixel Code (Заглушка) -->
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', 'YOUR_PIXEL_ID'); // ВСТАВ СВІЙ ID ПІКСЕЛЯ ТУТ
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"/></noscript>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        main: '#4E0000',
+                        mainDark: '#330000',
+                        mainLight: '#7A0000',
+                    },
+                    fontFamily: {
+                        sans: ['Arimo', 'sans-serif'],
+                        heading:['"Arial Narrow"', 'Arial', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { background-color: #FAFAFA; color: #111; overflow-x: hidden; }
+        .heading-style { text-transform: uppercase; letter-spacing: 0.05em; }
+        
+        /* Button pulse animation */
+        .btn-pulse {
+            box-shadow: 0 0 0 0 rgba(78, 0, 0, 0.7);
+            animation: pulse-red 2s infinite;
+        }
+        @keyframes pulse-red {
+            0% { transform: scale(0.98); box-shadow: 0 0 0 0 rgba(78, 0, 0, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 15px rgba(78, 0, 0, 0); }
+            100% { transform: scale(0.98); box-shadow: 0 0 0 0 rgba(78, 0, 0, 0); }
+        }
+
+        /* Form styling */
+        .iti { width: 100%; }
+        .input-field {
+            width: 100%; padding: 16px; border: 1px solid #ddd; border-radius: 8px;
+            font-size: 16px; transition: border-color 0.3s;
+        }
+        .input-field:focus { outline: none; border-color: #4E0000; box-shadow: 0 0 0 3px rgba(78,0,0,0.1); }
+        .iti__flag-container { z-index: 10; }
+        
+        /* Swiper Fixes */
+        .swiper-slide { height: auto; display: flex; justify-content: center; }
+        .swiper-slide img { border-radius: 12px; object-fit: cover; box-shadow: 0 4px 15px rgba(0,0,0,0.1); max-height: 500px;}
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- HERO SECTION (Оновлено) -->
+    <header class="relative text-white py-16 md:py-24 px-5 overflow-hidden min-h-[85vh] flex items-center justify-center">
+        <!-- Шар 3: Фото спікера -->
+        <div class="absolute inset-0 z-0">
+            <img src="IMG_8811.JPG" alt="Софія Фединяк" class="w-full h-full object-cover object-top" onerror="this.src='https://placehold.co/1200x800/4E0000/FFFFFF?text=ФОТО'">
+        </div>
+        
+        <!-- Шар 2: Градієнт затемнення -->
+        <div class="absolute inset-0 z-10 bg-gradient-to-b from-[#4E0000]/85 via-[#111111]/75 to-[#4E0000]/95 mix-blend-multiply"></div>
+        <!-- Додаткове затемнення для кращої читабельності -->
+        <div class="absolute inset-0 z-10 bg-black/40"></div>
+
+        <!-- Шар 1: Текст оферу -->
+        <div class="max-w-3xl mx-auto relative z-20 text-center w-full">
+            <h1 class="font-heading heading-style text-3xl md:text-5xl font-bold leading-tight mb-8">
+                Як реально накопичити свої перші <span class="text-yellow-400">100 000 $</span> і нарешті побудувати фундамент фінансової свободи.
+            </h1>
+            
+            <div class="bg-white/5 p-6 md:p-8 rounded-2xl text-center text-lg md:text-xl border border-white/20 mb-10 backdrop-blur-md shadow-2xl">
+                <p class="font-bold mb-6">Це не теорія. Це чітка, розрахована математично система, яка працює навіть якщо:</p>
+                <div class="flex flex-col gap-4">
+                    <div class="bg-white/10 border border-white/30 rounded-xl p-4 shadow-sm backdrop-blur-sm transition hover:bg-white/20">
+                        ви не народились в багатій родині
+                    </div>
+                    <div class="bg-white/10 border border-white/30 rounded-xl p-4 shadow-sm backdrop-blur-sm transition hover:bg-white/20">
+                        у вас немає «щасливої» фінансової освіти
+                    </div>
+                    <div class="bg-white/10 border border-white/30 rounded-xl p-4 shadow-sm backdrop-blur-sm transition hover:bg-white/20">
+                        а гроші завжди «витікають крізь пальці»
+                    </div>
+                </div>
+            </div>
+            
+            <button onclick="openModal()" class="w-full md:w-auto bg-white text-main font-bold text-xl py-4 px-12 rounded-full btn-pulse uppercase font-heading tracking-wider">
+                Дивитись урок
+            </button>
+        </div>
+    </header>
+
+    <!-- PAIN POINTS SECTION -->
+    <section class="py-12 md:py-20 px-5">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="font-heading heading-style text-3xl md:text-4xl text-center text-main font-bold mb-8">Знайома ситуація?</h2>
+            
+            <p class="text-xl text-center mb-6 font-semibold">Ви прекрасно заробляєте, але:</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-100 flex gap-4 items-center">
+                    <i data-lucide="trending-down" class="w-8 h-8 text-main shrink-0"></i>
+                    <p class="text-lg">наприкінці місяця не залишається нічого;</p>
+                </div>
+                <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-100 flex gap-4 items-center">
+                    <i data-lucide="receipt" class="w-8 h-8 text-main shrink-0"></i>
+                    <p class="text-lg">рахунки ростуть, а збережень — нуль;</p>
+                </div>
+                <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-100 flex gap-4 items-center">
+                    <i data-lucide="alert-circle" class="w-8 h-8 text-main shrink-0"></i>
+                    <p class="text-lg">борги нагадують про себе щоразу, коли отримуєте зарплату;</p>
+                </div>
+                <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-100 flex gap-4 items-center">
+                    <i data-lucide="cloud-off" class="w-8 h-8 text-main shrink-0"></i>
+                    <p class="text-lg">мрії про фінансову свободу виглядають як недосяжна казка.</p>
+                </div>
+            </div>
+
+            <div class="bg-red-50 p-6 rounded-xl border-l-4 border-main mb-8">
+                <p class="text-lg mb-4">Ви відчуваєте, що намагаєтесь, працюєте, намагаєтесь зекономити, але все одно: <b>💭 гроші просто прослизають крізь пальці.</b></p>
+                <p class="text-lg">Можливо, ви вже пробували «зберігати» — але виходить не більше ніж 50–100 $ на місяць… Або навіть менше.</p>
+            </div>
+
+            <div class="text-center">
+                <button onclick="openModal()" class="w-full md:w-auto bg-main text-white font-bold text-lg py-4 px-10 rounded-full hover:bg-mainDark transition-colors uppercase font-heading tracking-wider">
+                    Дивитись урок
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESULTS SECTION (Оновлено кольори) -->
+    <section class="bg-[#1a1a1a] text-white py-12 md:py-20 px-5">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="font-heading heading-style text-3xl md:text-4xl text-center text-mainLight font-bold mb-6">Результат після уроку</h2>
+            <p class="text-center text-lg md:text-xl mb-10 text-gray-300">Після цього уроку ти отримаєш не абстрактні мрії — ти отримаєш план із практичними цифрами й діями:</p>
+
+            <div class="space-y-6 mb-10">
+                <div class="flex gap-4 p-5 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition">
+                    <div class="bg-green-500 rounded-full p-1 h-fit shrink-0 mt-1"><i data-lucide="check" class="w-5 h-5 text-white"></i></div>
+                    <div>
+                        <p class="font-bold text-xl text-[#81D8D0] mb-1">Твій персональний план:</p>
+                        <p class="text-gray-300">як заробляти, відкладати і примножувати гроші без шаленого стресу і «випадкового багатства».</p>
+                    </div>
+                </div>
+                <div class="flex gap-4 p-5 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition">
+                    <div class="bg-green-500 rounded-full p-1 h-fit shrink-0 mt-1"><i data-lucide="check" class="w-5 h-5 text-white"></i></div>
+                    <div>
+                        <p class="font-bold text-xl text-[#81D8D0] mb-1">Чітку формулу:</p>
+                        <p class="text-gray-300 font-mono bg-black/40 p-2 rounded inline-block mt-2 text-sm md:text-base">100 000 = річні цілі + місячні майлстоуни + система накопичення</p>
+                    </div>
+                </div>
+                <div class="flex gap-4 p-5 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition">
+                    <div class="bg-green-500 rounded-full p-1 h-fit shrink-0 mt-1"><i data-lucide="check" class="w-5 h-5 text-white"></i></div>
+                    <div>
+                        <p class="font-bold text-xl text-[#81D8D0] mb-1">Реальні способи:</p>
+                        <p class="text-gray-300">як збільшити дохід, навіть якщо зараз він «всього» на оплату рахунків.</p>
+                    </div>
+                </div>
+                <div class="flex gap-4 p-5 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition">
+                    <div class="bg-green-500 rounded-full p-1 h-fit shrink-0 mt-1"><i data-lucide="check" class="w-5 h-5 text-white"></i></div>
+                    <div>
+                        <p class="font-bold text-xl text-[#81D8D0] mb-1">Розбір інвестицій:</p>
+                        <p class="text-gray-300">що саме почати робити сьогодні, щоб твій капітал почав працювати на тебе.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <button onclick="openModal()" class="w-full md:w-auto bg-main text-white font-bold text-lg py-4 px-10 rounded-full hover:bg-mainDark transition-colors shadow-[0_0_20px_rgba(78,0,0,0.5)] uppercase font-heading tracking-wider">
+                    Дивитись урок
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SPEAKER SECTION -->
+    <section class="py-12 md:py-20 px-5">
+        <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-10">
+            <!-- ФОТО СПІКЕРА -->
+            <div class="w-full md:w-5/12">
+                <img src="photo_2026-03-03_10-14-10.jpg" alt="Софія Фединяк" class="rounded-2xl shadow-xl w-full object-cover aspect-[3/4]" onerror="this.src='https://placehold.co/600x800/4E0000/FFFFFF?text=Фото+Софії'">
+            </div>
+            
+            <div class="w-full md:w-7/12">
+                <h2 class="font-heading heading-style text-4xl text-main font-bold mb-2">Софія Фединяк</h2>
+                <h3 class="text-xl font-bold text-gray-600 mb-6 uppercase tracking-wide">Я — ліцензований фінансовий радник</h3>
+                
+                <p class="text-lg mb-4">і щодня працюю з реальними людьми, які:</p>
+                <ul class="space-y-3 mb-8 pl-4 border-l-2 border-main">
+                    <li class="flex items-center gap-2"><div class="w-2 h-2 rounded-full bg-main"></div>не мріяли про 100 000$, а досягли;</li>
+                    <li class="flex items-center gap-2"><div class="w-2 h-2 rounded-full bg-main"></div>вийшли з боргів;</li>
+                    <li class="flex items-center gap-2"><div class="w-2 h-2 rounded-full bg-main"></div>збудували подушку безпеки;</li>
+                    <li class="flex items-center gap-2"><div class="w-2 h-2 rounded-full bg-main"></div>навчилися не просто інвестувати, а робити це системно.</li>
+                </ul>
+
+                <p class="text-lg font-bold text-main mb-4">Я не розповідаю:</p>
+                <ul class="space-y-2 mb-6">
+                    <li class="flex items-center gap-2"><i data-lucide="x" class="text-gray-400 w-5 h-5"></i> казок про «легкі гроші»,</li>
+                    <li class="flex items-center gap-2"><i data-lucide="x" class="text-gray-400 w-5 h-5"></i> лайфхаків для лінивих,</li>
+                    <li class="flex items-center gap-2"><i data-lucide="x" class="text-gray-400 w-5 h-5"></i> схем «зроби 10 000$ за 10 днів».</li>
+                </ul>
+
+                <div class="bg-gray-100 p-5 rounded-lg border border-gray-200">
+                    <p class="text-xl font-bold italic">"Я розповідаю те, що працює насправді, — і перевірено на десятках людей."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REVIEWS SECTION -->
+    <section class="bg-gray-50 py-12 md:py-20 px-0 overflow-hidden">
+        <div class="max-w-5xl mx-auto px-5">
+            <h2 class="font-heading heading-style text-4xl text-center text-main font-bold mb-2">Відгуки</h2>
+            <p class="text-center text-gray-500 font-bold tracking-widest uppercase text-sm mb-10 animate-bounce">
+                <i data-lucide="chevron-right" class="inline w-4 h-4 mr-1"></i> Гортайте в бік, щоб переглянути <i data-lucide="chevron-left" class="inline w-4 h-4 ml-1"></i>
+            </p>
+        </div>
+
+        <!-- Swiper -->
+        <div class="swiper mySwiper pl-5">
+            <div class="swiper-wrapper">
+                <!-- ВСТАВ СВОЇ ФОТО ВІДГУКІВ ТУТ -->
+                <div class="swiper-slide"><img src="photo_2026-03-03_09-23-19.jpg" alt="Відгук 1" onerror="this.src='https://placehold.co/400x600/ddd/4E0000?text=Відгук+1'"></div>
+                <div class="swiper-slide"><img src="photo_2026-03-03_09-23-32.jpg" alt="Відгук 2" onerror="this.src='https://placehold.co/400x600/ddd/4E0000?text=Відгук+2'"></div>
+                <div class="swiper-slide"><img src="photo_2026-03-03_09-23-36.jpg" alt="Відгук 3" onerror="this.src='https://placehold.co/400x600/ddd/4E0000?text=Відгук+3'"></div>
+                <div class="swiper-slide"><img src="photo_2026-03-03_09-23-40.jpg" alt="Відгук 4" onerror="this.src='https://placehold.co/400x600/ddd/4E0000?text=Відгук+4'"></div>
+                <div class="swiper-slide"><img src="photo_2026-03-03_09-23-44.jpg" alt="Відгук 5" onerror="this.src='https://placehold.co/400x600/ddd/4E0000?text=Відгук+5'"></div>
+                <div class="swiper-slide"><img src="photo_2026-03-03_09-23-47.jpg" alt="Відгук 6" onerror="this.src='https://placehold.co/400x600/ddd/4E0000?text=Відгук+6'"></div>
+            </div>
+            <div class="swiper-pagination mt-6 relative"></div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA SECTION -->
+    <section class="bg-main text-white py-16 md:py-24 px-5 text-center relative">
+        <div class="max-w-3xl mx-auto relative z-10">
+            <h2 class="font-heading heading-style text-3xl md:text-5xl font-bold mb-6">Цей урок — твоє перше рішення, яке реально змінює результат.</h2>
+            <p class="text-xl md:text-2xl mb-10 text-gray-200">Не ще один план, а перший реальний крок до твоїх перших 100 000$.</p>
+            <button onclick="openModal()" class="w-full md:w-auto bg-white text-main font-bold text-2xl py-5 px-12 rounded-full btn-pulse uppercase font-heading tracking-wider">
+                Дивитись урок
+            </button>
+        </div>
+    </section>
+
+    <!-- POPUP MODAL -->
+    <div id="leadModal" class="fixed inset-0 z-50 flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-black/70 backdrop-blur-sm" onclick="closeModal()"></div>
+        
+        <!-- Modal Content -->
+        <div class="bg-white w-full max-w-md mx-4 rounded-2xl shadow-2xl relative z-10 transform scale-95 transition-transform duration-300" id="modalBox">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-black">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+            
+            <div class="p-8">
+                <h3 class="font-heading heading-style text-2xl font-bold text-center text-main mb-2">Отримайте доступ до уроку</h3>
+                <p class="text-center text-gray-500 mb-6 text-sm">Заповніть форму нижче, щоб ми відправили вам доступ</p>
+                
+                <form id="leadForm" class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-1">Ваше ім’я</label>
+                        <div class="relative">
+                            <i data-lucide="user" class="absolute left-4 top-4 w-5 h-5 text-gray-400"></i>
+                            <input type="text" id="name" required placeholder="Введіть ім'я" class="input-field pl-12">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-1">Ваш нік в Telegram</label>
+                        <div class="relative">
+                            <i data-lucide="send" class="absolute left-4 top-4 w-5 h-5 text-gray-400"></i>
+                            <input type="text" id="telegram" required placeholder="@username" class="input-field pl-12">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-1">Ваш номер телефону</label>
+                        <input type="tel" id="phone" required class="input-field">
+                        <p id="phoneError" class="text-red-500 text-xs mt-1 hidden font-bold">Невірний формат номера</p>
+                    </div>
+
+                    <button type="submit" id="submitBtn" class="w-full bg-main text-white font-bold text-lg py-4 rounded-xl hover:bg-mainDark transition-colors mt-4 uppercase tracking-wider relative">
+                        <span id="btnText">ОТРИМАТИ УРОК</span>
+                        <i data-lucide="loader-2" id="btnLoader" class="w-6 h-6 animate-spin mx-auto hidden"></i>
+                    </button>
+                    
+                    <p class="text-xs text-center text-gray-400 mt-3">Ваші дані надійно захищені</p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/intlTelInput.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script>
+        // CONFIGURATION
+        const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_WEB_APP_URL'; // ВСТАВ URL СКРИПТА ТУТ
+        const TELEGRAM_BOT_URL = 'YOUR_TELEGRAM_BOT_LINK'; // ВСТАВ СИЛКУ НА БОТА ТУТ (напр. https://t.me/sofia_bot)
+
+        // Init Icons
+        lucide.createIcons();
+
+        // Init Swiper
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 1.2,
+            spaceBetween: 20,
+            centeredSlides: false,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            breakpoints: {
+                640: { slidesPerView: 2.2, spaceBetween: 20 },
+                1024: { slidesPerView: 3.2, spaceBetween: 30 },
+            }
+        });
+
+        // Init Phone Input with Auto-Geo
+        const phoneInput = document.querySelector("#phone");
+        const iti = window.intlTelInput(phoneInput, {
+            utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js",
+            separateDialCode: true,
+            initialCountry: "auto",
+            geoIpLookup: function(callback) {
+                fetch("https://get.geojs.io/v1/ip/country.json")
+                    .then(res => res.json())
+                    .then(data => callback(data.country))
+                    .catch(() => callback("ua")); // Default to Ukraine if error
+            }
+        });
+
+        // Modal Logic
+        const modal = document.getElementById('leadModal');
+        const modalBox = document.getElementById('modalBox');
+
+        function openModal() {
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modalBox.classList.remove('scale-95');
+                modalBox.classList.add('scale-100');
+            }, 10);
+            
+            // FB Pixel Track
+            if(typeof fbq !== 'undefined') {
+                fbq('track', 'InitiateCheckout');
+            }
+        }
+
+        function closeModal() {
+            modal.classList.add('opacity-0');
+            modalBox.classList.remove('scale-100');
+            modalBox.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        // Parse UTM parameters
+        function getUTMs() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return {
+                source: urlParams.get('utm_source') || '',
+                medium: urlParams.get('utm_medium') || '',
+                campaign: urlParams.get('utm_campaign') || '',
+                content: urlParams.get('utm_content') || '',
+                term: urlParams.get('utm_term') || ''
+            };
+        }
+
+        // Form Submit Logic
+        document.getElementById('leadForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const errorMsg = document.getElementById('phoneError');
+            
+            // Validate Phone
+            if (!iti.isValidNumber()) {
+                phoneInput.classList.add('border-red-500');
+                errorMsg.classList.remove('hidden');
+                return;
+            }
+            
+            phoneInput.classList.remove('border-red-500');
+            errorMsg.classList.add('hidden');
+
+            // Collect Data
+            const utms = getUTMs();
+            const payload = {
+                name: document.getElementById('name').value,
+                phone: iti.getNumber(),
+                telegram: document.getElementById('telegram').value,
+                source: utms.source,
+                medium: utms.medium,
+                campaign: utms.campaign,
+                content: utms.content,
+                term: utms.term
+            };
+
+            // Loading state
+            const btnText = document.getElementById('btnText');
+            const btnLoader = document.getElementById('btnLoader');
+            const submitBtn = document.getElementById('submitBtn');
+            
+            btnText.classList.add('hidden');
+            btnLoader.classList.remove('hidden');
+            submitBtn.disabled = true;
+
+            try {
+                // Send to Google Script
+                const response = await fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors', // IMPORTANT for Google Apps Script
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                // Success
+                if(typeof fbq !== 'undefined') {
+                    fbq('track', 'Lead');
+                }
+                
+                // Redirect
+                window.location.href = TELEGRAM_BOT_URL;
+                
+            } catch (err) {
+                console.error("Помилка відправки:", err);
+                alert("Сталася помилка. Будь ласка, спробуйте пізніше або напишіть нам напряму.");
+                
+                // Reset state on error
+                btnText.classList.remove('hidden');
+                btnLoader.classList.add('hidden');
+                submitBtn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
