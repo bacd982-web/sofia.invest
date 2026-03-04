@@ -99,6 +99,35 @@
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.15'/%3E%3C/svg%3E");
             background-repeat: repeat;
         }
+
+        /* Інтерактивна SVG анімація іконок (додано) */
+        .icon-animate {
+            opacity: 0;
+            transform: scale(0.5);
+            transition: opacity 0.5s ease-out, transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .icon-animate.draw {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .icon-animate.draw path,
+        .icon-animate.draw circle,
+        .icon-animate.draw rect,
+        .icon-animate.draw line,
+        .icon-animate.draw polyline,
+        .icon-animate.draw polygon {
+            stroke-dasharray: 200;
+            stroke-dashoffset: 200;
+            animation: drawSvgPath 1.5s ease-out forwards;
+        }
+
+        @keyframes drawSvgPath {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -382,6 +411,25 @@
         // Init Icons
         lucide.createIcons();
 
+        // ----------------------------------------------------
+        // НОВИЙ КОД ДЛЯ ІНТЕРАКТИВНОЇ АНІМАЦІЇ SVG ІКОНОК
+        // ----------------------------------------------------
+        const svgIcons = document.querySelectorAll('svg.lucide');
+        svgIcons.forEach(icon => icon.classList.add('icon-animate'));
+
+        const svgObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Анімуємо іконку тільки тоді, коли вона з'являється на екрані
+                    entry.target.classList.add('draw');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 }); // Анімація спрацює, коли іконка видима на 50%
+
+        svgIcons.forEach(icon => svgObserver.observe(icon));
+        // ----------------------------------------------------
+
         // Init Swiper
         var swiper = new Swiper(".mySwiper", {
             slidesPerView: 1.2,
@@ -528,5 +576,3 @@
     </script>
 </body>
 </html>
-
-
