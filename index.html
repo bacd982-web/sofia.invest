@@ -174,8 +174,8 @@
 
     <!-- 2. PAIN POINTS SECTION (ФОН ЛЕОПАРД) -->
     <section class="pt-8 pb-12 md:pt-14 md:pb-16 px-5 text-white relative overflow-hidden">
-        <!-- Фон Леопард через атрибут style -->
-        <div class="absolute inset-0 z-0 bg-cover bg-center bg-fixed" style="background-image: url('dollars.jpg');"></div>
+        <!-- Фон Леопард: прибрано bg-fixed, щоб картинка не збільшувалась на телефонах -->
+        <div class="absolute inset-0 z-0 bg-cover bg-center" style="background-image: url('leopard.jpg');"></div>
         <!-- Темне затемнення -->
         <div class="absolute inset-0 bg-black/75 z-10"></div>
 
@@ -232,8 +232,8 @@
 
     <!-- 3. RESULTS SECTION (ФОН ЗЕБРА) -->
     <section class="relative py-12 md:py-16 px-5 text-white overflow-hidden">
-        <!-- Фон Зебра через атрибут style -->
-        <div class="absolute inset-0 z-0 bg-cover bg-center bg-fixed" style="background-image: url('zebra.jpg');"></div>
+        <!-- Фон Зебра: прибрано bg-fixed, щоб картинка не збільшувалась на телефонах -->
+        <div class="absolute inset-0 z-0 bg-cover bg-center" style="background-image: url('zebra.jpg');"></div>
         <!-- Градієнтне затемнення -->
         <div class="absolute inset-0 bg-black/75 z-10"></div>
 
@@ -282,7 +282,6 @@
 
     <!-- 4. SPEAKER SECTION (СВІТЛЕ ХУТРО) -->
     <section class="py-12 md:py-16 px-5 relative overflow-hidden">
-        <!-- Фон Світле хутро через атрибут style -->
         <div class="absolute inset-0 z-0 bg-cover bg-center bg-fixed" style="background-image: url('light-fur.jpg');"></div>
         <!-- Світле затемнення для чорного тексту -->
         <div class="absolute inset-0 bg-[#ffffff]/60 z-10 backdrop-blur-[2px]"></div>
@@ -322,7 +321,6 @@
 
     <!-- 5. REVIEWS SECTION (ШОКОЛАД) -->
     <section class="py-12 md:py-16 px-0 overflow-hidden relative">
-        <!-- Фон Шоколад через атрибут style -->
         <div class="absolute inset-0 z-0 bg-cover bg-center" style="background-image: url('chocolate.jpg');"></div>
         <!-- Легке тепле затемнення -->
         <div class="absolute inset-0 bg-[#2d1205]/40 z-10"></div>
@@ -357,8 +355,7 @@
 
     <!-- 6. FINAL CTA SECTION (ПАДАЮЧІ ДОЛАРИ) -->
     <section class="py-14 md:py-24 px-5 text-center relative overflow-hidden">
-        <!-- Фон Падаючі долари через атрибут style -->
-        <div class="absolute inset-0 z-0 bg-cover bg-center" style="background-image: url('falling-dollars.jpg');"></div>
+        <div class="absolute inset-0 z-0 bg-cover bg-center" style="background-image: url('dollars.jpg');"></div>
         <div class="absolute inset-0 bg-black/80 z-10"></div>
 
         <div class="max-w-4xl mx-auto relative z-20">
@@ -453,7 +450,7 @@
         svgIcons.forEach(icon => svgObserver.observe(icon));
         // ----------------------------------------------------
 
-        // Init Swiper 
+        // Init Swiper
         var swiper = new Swiper(".mySwiper", {
             slidesPerView: 1.2,
             spaceBetween: 20,
@@ -599,4 +596,3 @@
     </script>
 </body>
 </html>
-
