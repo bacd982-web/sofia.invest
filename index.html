@@ -41,6 +41,7 @@
                     colors: {
                         main: '#4E0000',
                         mainDark: '#330000',
+                        gold: '#D4AF37',
                     },
                     fontFamily: {
                         sans:['"Playfair Display"', 'serif'],
@@ -52,7 +53,7 @@
     </script>
 
     <style>
-        body { background-color: #4E0000; color: #111; overflow-x: hidden; }
+        body { background-color: #111; color: #111; overflow-x: hidden; }
         .heading-style { text-transform: uppercase; letter-spacing: 0.05em; }
         
         /* Button pulse animation */
@@ -75,9 +76,21 @@
             animation: fadeInUpLoad 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
-        /* Strong Text Shadow for Readability without box */
+        /* Strong Text Shadow */
         .text-shadow-strong {
             text-shadow: 0px 4px 15px rgba(0, 0, 0, 0.9), 0px 0px 30px rgba(0, 0, 0, 0.8), 0px 0px 60px rgba(0, 0, 0, 0.7);
+        }
+
+        /* LUXURY CARDS (Ефект дорогого матового скла) */
+        .luxury-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(0, 0, 0, 0.5) 100%);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            border-left: 1px solid rgba(255, 255, 255, 0.3);
+            border-right: 1px solid rgba(0, 0, 0, 0.4);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
         }
 
         /* Form styling */
@@ -93,40 +106,23 @@
         .swiper-slide { height: auto; display: flex; justify-content: center; }
         .swiper-slide img { border-radius: 12px; object-fit: cover; box-shadow: 0 4px 15px rgba(0,0,0,0.1); max-height: 500px;}
         
-        /* Червона текстура (шум на фоні #4E0000) */
-        .bg-texture-red {
-            background-color: #4E0000;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.15'/%3E%3C/svg%3E");
-            background-repeat: repeat;
-        }
-
         /* Інтерактивна SVG анімація іконок */
         .icon-animate {
             opacity: 0;
             transform: scale(0.5);
             transition: opacity 0.5s ease-out, transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
-
         .icon-animate.draw {
             opacity: 1;
             transform: scale(1);
         }
-
-        .icon-animate.draw path,
-        .icon-animate.draw circle,
-        .icon-animate.draw rect,
-        .icon-animate.draw line,
-        .icon-animate.draw polyline,
-        .icon-animate.draw polygon {
+        .icon-animate.draw path, .icon-animate.draw circle, .icon-animate.draw rect, .icon-animate.draw line, .icon-animate.draw polyline, .icon-animate.draw polygon {
             stroke-dasharray: 200;
             stroke-dashoffset: 200;
             animation: drawSvgPath 1.5s ease-out forwards;
         }
-
         @keyframes drawSvgPath {
-            to {
-                stroke-dashoffset: 0;
-            }
+            to { stroke-dashoffset: 0; }
         }
     </style>
 </head>
@@ -139,27 +135,22 @@
             <img src="IMG_5574.PNG" alt="Софія Фединяк" class="w-full h-full object-cover object-top opacity-100" onerror="this.src='https://placehold.co/1200x800/4E0000/FFFFFF?text=ФОТО'">
         </div>
         
-        <!-- Шар 2: Градієнт тільки знизу, щоб фото розчинялося в червоному фоні -->
+        <!-- Шар 2: Градієнт тільки знизу -->
         <div class="absolute inset-x-0 bottom-0 h-3/4 z-10 bg-gradient-to-t from-[#4E0000] via-[#4E0000]/80 to-transparent pointer-events-none"></div>
 
-        <!-- Шар 1: Текст оферу (Піднято вище: pt-[160px] для моб) -->
+        <!-- Шар 1: Текст оферу -->
         <div class="max-w-4xl mx-auto relative z-20 text-center w-full flex flex-col items-center pt-[160px] md:pt-32 pb-10">
             
-            <!-- Контейнер для заголовка -->
             <div class="relative mb-5 max-w-3xl w-full animate-on-load" style="animation-delay: 0.1s;">
-                <!-- Заголовок з бантиком над "і" -->
                 <h1 class="font-heading heading-style text-2xl md:text-4xl lg:text-5xl font-bold leading-tight text-white text-shadow-strong relative z-10">
                     Як накопичити перш<span class="relative inline-block">
-                        <!-- Бантик позиціонується відносно літери "і" -->
                         <img src="IMG_5575.PNG" alt="Бантик із доларів" class="absolute bottom-[60%] left-1/2 -translate-x-1/2 w-20 md:w-24 drop-shadow-2xl z-0 hover:scale-105 transition-transform duration-300 pointer-events-none" style="max-width: unset;" onerror="this.style.display='none'">
-                        <!-- Сама літера "і" поверх бантика -->
                         <span class="relative z-10">і</span>
                     </span> 100 000$<br>
                     <span class="text-xl md:text-3xl mt-2 block font-bold">та стабільно отримувати пасивний дохід завдяки інвестиціям</span>
                 </h1>
             </div>
             
-            <!-- Додаткові фрази -->
             <div class="flex flex-col gap-3 mb-8 text-base md:text-xl font-medium text-gray-100 bg-black/20 backdrop-blur-sm p-6 rounded-2xl border border-white/10 w-full max-w-2xl animate-on-load" style="animation-delay: 0.3s;">
                 <div class="flex items-center justify-center gap-3">
                     <i data-lucide="check" class="text-green-400 w-6 h-6 shrink-0"></i>
@@ -181,176 +172,198 @@
         </div>
     </header>
 
-    <!-- 2. PAIN POINTS SECTION -->
-    <section class="pt-8 pb-12 md:pt-12 md:pb-20 px-5 bg-texture-red text-white relative overflow-hidden">
-        <div class="max-w-3xl mx-auto relative z-10">
-            <!-- Анімований заголовок -->
-            <h2 class="font-heading heading-style text-3xl md:text-4xl text-center text-white font-bold mb-8 drop-shadow-md opacity-0 translate-y-4 transition-all duration-700 ease-out pain-point-item">
+    <!-- 2. PAIN POINTS SECTION (ЛЕОПАРД) -->
+    <section class="pt-12 pb-16 md:pt-20 md:pb-24 px-5 text-white relative overflow-hidden">
+        <!-- Фон Леопард -->
+        <div class="absolute inset-0 z-0 bg-[url('leopard.jpg')] bg-cover bg-center bg-fixed"></div>
+        <!-- Темне затемнення для читабельності -->
+        <div class="absolute inset-0 bg-black/75 z-10"></div>
+
+        <div class="max-w-3xl mx-auto relative z-20">
+            <h2 class="font-heading heading-style text-3xl md:text-4xl text-center text-white font-bold mb-8 drop-shadow-lg opacity-0 translate-y-4 transition-all duration-700 ease-out pain-point-item">
                 Знайома ситуація?
             </h2>
             
-            <!-- Анімований підзаголовок -->
-            <p class="text-xl text-center mb-6 font-semibold text-gray-200 opacity-0 translate-y-4 transition-all duration-700 ease-out pain-point-item">
+            <p class="text-xl text-center mb-8 font-semibold text-gray-200 opacity-0 translate-y-4 transition-all duration-700 ease-out pain-point-item">
                 Ви прекрасно заробляєте, але:
             </p>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-                <div class="bg-white/10 backdrop-blur-sm p-5 rounded-xl shadow-md border border-white/20 flex gap-4 items-center opacity-0 translate-y-4 transition-all duration-700 ease-out pain-point-item hover:bg-white/15">
-                    <i data-lucide="trending-down" class="w-8 h-8 text-white shrink-0"></i>
-                    <p class="text-lg">наприкінці місяця не залишається нічого;</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-10">
+                <div class="luxury-card p-6 rounded-2xl flex gap-4 items-center opacity-0 translate-y-4 transition-all duration-700 ease-out pain-point-item">
+                    <div class="p-3 bg-white/10 rounded-full shrink-0">
+                        <i data-lucide="trending-down" class="w-7 h-7 text-white"></i>
+                    </div>
+                    <p class="text-lg font-medium">наприкінці місяця не залишається нічого;</p>
                 </div>
-                <div class="bg-white/10 backdrop-blur-sm p-5 rounded-xl shadow-md border border-white/20 flex gap-4 items-center opacity-0 translate-y-4 transition-all duration-700 ease-out pain-point-item hover:bg-white/15">
-                    <i data-lucide="receipt" class="w-8 h-8 text-white shrink-0"></i>
-                    <p class="text-lg">рахунки ростуть, а збережень — нуль;</p>
+                <div class="luxury-card p-6 rounded-2xl flex gap-4 items-center opacity-0 translate-y-4 transition-all duration-700 ease-out pain-point-item">
+                    <div class="p-3 bg-white/10 rounded-full shrink-0">
+                        <i data-lucide="receipt" class="w-7 h-7 text-white"></i>
+                    </div>
+                    <p class="text-lg font-medium">рахунки ростуть, а збережень — нуль;</p>
                 </div>
-                <div class="bg-white/10 backdrop-blur-sm p-5 rounded-xl shadow-md border border-white/20 flex gap-4 items-center opacity-0 translate-y-4 transition-all duration-700 ease-out pain-point-item hover:bg-white/15">
-                    <i data-lucide="alert-circle" class="w-8 h-8 text-white shrink-0"></i>
-                    <p class="text-lg">борги нагадують про себе щоразу, коли отримуєте зарплату;</p>
+                <div class="luxury-card p-6 rounded-2xl flex gap-4 items-center opacity-0 translate-y-4 transition-all duration-700 ease-out pain-point-item">
+                    <div class="p-3 bg-white/10 rounded-full shrink-0">
+                        <i data-lucide="alert-circle" class="w-7 h-7 text-white"></i>
+                    </div>
+                    <p class="text-lg font-medium">борги нагадують про себе щоразу, коли отримуєте зарплату;</p>
                 </div>
-                <div class="bg-white/10 backdrop-blur-sm p-5 rounded-xl shadow-md border border-white/20 flex gap-4 items-center opacity-0 translate-y-4 transition-all duration-700 ease-out pain-point-item hover:bg-white/15">
-                    <i data-lucide="cloud-off" class="w-8 h-8 text-white shrink-0"></i>
-                    <p class="text-lg">мрії про фінансову свободу виглядають як недосяжна казка.</p>
+                <div class="luxury-card p-6 rounded-2xl flex gap-4 items-center opacity-0 translate-y-4 transition-all duration-700 ease-out pain-point-item">
+                    <div class="p-3 bg-white/10 rounded-full shrink-0">
+                        <i data-lucide="cloud-off" class="w-7 h-7 text-white"></i>
+                    </div>
+                    <p class="text-lg font-medium">мрії про фінансову свободу виглядають як недосяжна казка.</p>
                 </div>
             </div>
 
-            <!-- Анімований текстовий блок-висновок -->
-            <div class="bg-black/30 backdrop-blur-md p-6 rounded-xl border-l-4 border-white mb-8 shadow-md opacity-0 translate-y-4 transition-all duration-700 ease-out pain-point-item">
-                <p class="text-lg mb-4">Ви багато працюєте, намагаєтесь зекономити, але все одно: <br><b>гроші просто прослизають крізь пальці.</b></p>
-                <p class="text-lg">Можливо, ви вже пробували «зберігати» — але виходить не більше ніж 50–100 $ на місяць… Або навіть менше.</p>
+            <div class="luxury-card p-8 rounded-2xl border-l-4 border-l-yellow-600 mb-10 opacity-0 translate-y-4 transition-all duration-700 ease-out pain-point-item">
+                <p class="text-xl mb-4 leading-relaxed">Ви багато працюєте, намагаєтесь зекономити, але все одно: <br><b class="text-yellow-500">гроші просто прослизають крізь пальці.</b></p>
+                <p class="text-lg text-gray-300">Можливо, ви вже пробували «зберігати» — але виходить не більше ніж 50–100 $ на місяць… Або навіть менше.</p>
             </div>
 
-            <div class="text-center mt-10">
-                <button onclick="openModal()" class="w-full md:w-auto bg-white text-main font-bold text-lg py-4 px-10 rounded-full btn-pulse uppercase font-heading tracking-wider shadow-lg hover:bg-gray-100">
+            <div class="text-center">
+                <button onclick="openModal()" class="w-full md:w-auto bg-white text-main font-bold text-lg py-4 px-10 rounded-full btn-pulse uppercase font-heading tracking-wider shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:bg-gray-100 transition-colors">
                     Дивитись урок
                 </button>
             </div>
         </div>
     </section>
 
-    <!-- 3. RESULTS SECTION -->
-    <section class="relative py-12 md:py-20 px-5 text-white overflow-hidden bg-[#4E0000]">
-        <!-- Фон з доларами, що падають -->
-        <div class="absolute inset-0 z-0">
-             <img src="falling-dollars.jpg" alt="Фон гроші" class="w-full h-full object-cover opacity-50 mix-blend-luminosity" onerror="this.src='https://placehold.co/1200x800/111/222?text=Долари'">
-        </div>
-        <!-- Градієнт -->
-        <div class="absolute inset-0 bg-[#4E0000]/60 z-10"></div>
+    <!-- 3. RESULTS SECTION (ЗЕБРА) -->
+    <section class="relative py-12 md:py-24 px-5 text-white overflow-hidden">
+        <!-- Фон Зебра -->
+        <div class="absolute inset-0 z-0 bg-[url('zebra.jpg')] bg-cover bg-center bg-fixed"></div>
+        <!-- Градієнтне затемнення -->
+        <div class="absolute inset-0 bg-black/80 z-10"></div>
 
         <div class="max-w-4xl mx-auto relative z-20">
-            <h2 class="font-heading heading-style text-3xl md:text-4xl text-center text-white font-bold mb-6 drop-shadow-md">Результат після уроку</h2>
-            <p class="text-center text-lg md:text-xl mb-10 text-gray-200">Після цього уроку ти отримаєш не абстрактні мрії — ти отримаєш план із практичними цифрами й діями:</p>
+            <h2 class="font-heading heading-style text-3xl md:text-4xl text-center text-white font-bold mb-6 drop-shadow-lg">Результат після уроку</h2>
+            <p class="text-center text-lg md:text-xl mb-12 text-gray-300 max-w-2xl mx-auto">Після цього уроку ти отримаєш не абстрактні мрії — ти отримаєш план із практичними цифрами й діями:</p>
 
-            <div class="space-y-6 mb-12">
-                <!-- Картки -->
-                <div class="flex gap-4 p-5 bg-white/10 backdrop-blur-md rounded-xl border border-white/20 hover:bg-white/20 shadow-lg transition opacity-0 translate-y-4 duration-700 ease-out result-card-item">
-                    <div class="h-fit shrink-0 mt-1"><i data-lucide="target" class="w-6 h-6 text-white"></i></div>
+            <div class="space-y-6 mb-14">
+                <div class="luxury-card flex gap-5 p-6 rounded-2xl transition opacity-0 translate-y-4 duration-700 ease-out result-card-item">
+                    <div class="h-fit shrink-0 mt-1 p-3 bg-white/10 rounded-full"><i data-lucide="target" class="w-6 h-6 text-white"></i></div>
                     <div>
-                        <p class="font-bold text-xl text-white mb-1">Твій персональний план:</p>
-                        <p class="text-gray-200">як заробляти, відкладати і примножувати гроші без шаленого стресу і «випадкового багатства».</p>
+                        <p class="font-bold text-xl text-white mb-2 tracking-wide">Твій персональний план:</p>
+                        <p class="text-gray-300 text-lg">як заробляти, відкладати і примножувати гроші без шаленого стресу і «випадкового багатства».</p>
                     </div>
                 </div>
-                <div class="flex gap-4 p-5 bg-white/10 backdrop-blur-md rounded-xl border border-white/20 hover:bg-white/20 shadow-lg transition opacity-0 translate-y-4 duration-700 ease-out result-card-item">
-                    <div class="h-fit shrink-0 mt-1"><i data-lucide="calculator" class="w-6 h-6 text-white"></i></div>
+                <div class="luxury-card flex gap-5 p-6 rounded-2xl transition opacity-0 translate-y-4 duration-700 ease-out result-card-item">
+                    <div class="h-fit shrink-0 mt-1 p-3 bg-white/10 rounded-full"><i data-lucide="calculator" class="w-6 h-6 text-white"></i></div>
                     <div>
-                        <p class="font-bold text-xl text-white mb-1">Чітку формулу:</p>
-                        <p class="text-white font-mono bg-black/40 p-2 rounded inline-block mt-2 text-sm md:text-base border border-white/10">100 000 = річні цілі + місячні майлстоуни + система накопичення</p>
+                        <p class="font-bold text-xl text-white mb-2 tracking-wide">Чітку формулу:</p>
+                        <p class="text-gray-100 font-mono bg-black/60 px-3 py-2 rounded-lg inline-block mt-1 text-sm md:text-base border border-white/20 shadow-inner">100 000 = річні цілі + місячні майлстоуни + система накопичення</p>
                     </div>
                 </div>
-                <div class="flex gap-4 p-5 bg-white/10 backdrop-blur-md rounded-xl border border-white/20 hover:bg-white/20 shadow-lg transition opacity-0 translate-y-4 duration-700 ease-out result-card-item">
-                    <div class="h-fit shrink-0 mt-1"><i data-lucide="trending-up" class="w-6 h-6 text-white"></i></div>
+                <div class="luxury-card flex gap-5 p-6 rounded-2xl transition opacity-0 translate-y-4 duration-700 ease-out result-card-item">
+                    <div class="h-fit shrink-0 mt-1 p-3 bg-white/10 rounded-full"><i data-lucide="trending-up" class="w-6 h-6 text-white"></i></div>
                     <div>
-                        <p class="font-bold text-xl text-white mb-1">Реальні способи:</p>
-                        <p class="text-gray-200">як збільшити дохід, навіть якщо зараз він «всього» на оплату рахунків.</p>
+                        <p class="font-bold text-xl text-white mb-2 tracking-wide">Реальні способи:</p>
+                        <p class="text-gray-300 text-lg">як збільшити дохід, навіть якщо зараз він «всього» на оплату рахунків.</p>
                     </div>
                 </div>
-                <div class="flex gap-4 p-5 bg-white/10 backdrop-blur-md rounded-xl border border-white/20 hover:bg-white/20 shadow-lg transition opacity-0 translate-y-4 duration-700 ease-out result-card-item">
-                    <div class="h-fit shrink-0 mt-1"><i data-lucide="pie-chart" class="w-6 h-6 text-white"></i></div>
+                <div class="luxury-card flex gap-5 p-6 rounded-2xl transition opacity-0 translate-y-4 duration-700 ease-out result-card-item">
+                    <div class="h-fit shrink-0 mt-1 p-3 bg-white/10 rounded-full"><i data-lucide="pie-chart" class="w-6 h-6 text-white"></i></div>
                     <div>
-                        <p class="font-bold text-xl text-white mb-1">Розбір інвестицій:</p>
-                        <p class="text-gray-200">що саме почати робити сьогодні, щоб твій капітал почав працювати на тебе.</p>
+                        <p class="font-bold text-xl text-white mb-2 tracking-wide">Розбір інвестицій:</p>
+                        <p class="text-gray-300 text-lg">що саме почати робити сьогодні, щоб твій капітал почав працювати на тебе.</p>
                     </div>
                 </div>
             </div>
 
             <div class="text-center">
-                <button onclick="openModal()" class="w-full md:w-auto bg-white text-main font-bold text-lg py-4 px-10 rounded-full hover:bg-gray-100 transition-colors btn-pulse shadow-lg uppercase font-heading tracking-wider">
+                <button onclick="openModal()" class="w-full md:w-auto bg-white text-main font-bold text-lg py-4 px-10 rounded-full hover:bg-gray-100 transition-colors btn-pulse shadow-[0_0_20px_rgba(255,255,255,0.3)] uppercase font-heading tracking-wider">
                     Дивитись урок
                 </button>
             </div>
         </div>
     </section>
 
-    <!-- 4. SPEAKER SECTION -->
-    <section class="py-16 md:py-24 px-5 bg-texture-red relative">
-        <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-10 relative z-10">
+    <!-- 4. SPEAKER SECTION (СВІТЛЕ ХУТРО) -->
+    <section class="py-16 md:py-24 px-5 relative overflow-hidden">
+        <!-- Фон Світле хутро -->
+        <div class="absolute inset-0 z-0 bg-[url('light-fur.jpg')] bg-cover bg-center bg-fixed"></div>
+        <!-- Світле затемнення для чорного тексту -->
+        <div class="absolute inset-0 bg-[#fdfbf7]/75 z-10"></div>
+
+        <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-10 md:gap-16 relative z-20">
             <!-- ФОТО СПІКЕРА -->
             <div class="w-full md:w-5/12">
-                <img src="photo_2026-03-03_10-14-10.jpg" alt="Софія Фединяк" class="rounded-2xl shadow-2xl border border-white/10 w-full object-cover aspect-[3/4]" onerror="this.src='https://placehold.co/600x800/4E0000/FFFFFF?text=Фото+Софії'">
+                <img src="photo_2026-03-03_10-14-10.jpg" alt="Софія Фединяк" class="rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.3)] border border-black/10 w-full object-cover aspect-[3/4]" onerror="this.src='https://placehold.co/600x800/4E0000/FFFFFF?text=Фото+Софії'">
             </div>
             
-            <div class="w-full md:w-7/12 text-white">
-                <h2 class="font-heading heading-style text-4xl font-bold mb-2 drop-shadow-md">Софія Фединяк</h2>
-                <h3 class="text-xl font-bold text-gray-300 mb-6 uppercase tracking-wide">Я — ліцензований фінансовий радник</h3>
+            <div class="w-full md:w-7/12 text-gray-900">
+                <h2 class="font-heading heading-style text-4xl md:text-5xl font-extrabold mb-2 text-black">Софія Фединяк</h2>
+                <h3 class="text-xl md:text-2xl font-bold text-main mb-8 uppercase tracking-wide">Я — ліцензований фінансовий радник</h3>
                 
-                <p class="text-lg mb-4 text-gray-200">і щодня працюю з реальними людьми, які:</p>
-                <ul class="space-y-3 mb-8 pl-4 border-l-2 border-white/30">
-                    <li class="flex items-center gap-2"><div class="w-2 h-2 rounded-full bg-white shrink-0"></div>не мріяли про 100 000$, а досягли;</li>
-                    <li class="flex items-center gap-2"><div class="w-2 h-2 rounded-full bg-white shrink-0"></div>вийшли з боргів;</li>
-                    <li class="flex items-center gap-2"><div class="w-2 h-2 rounded-full bg-white shrink-0"></div>збудували подушку безпеки;</li>
-                    <li class="flex items-center gap-2"><div class="w-2 h-2 rounded-full bg-white shrink-0"></div>навчилися не просто інвестувати, а робити це системно.</li>
+                <p class="text-xl mb-5 font-medium">і щодня працюю з реальними людьми, які:</p>
+                <ul class="space-y-4 mb-10 pl-5 border-l-2 border-main/40 text-lg">
+                    <li class="flex items-center gap-3"><div class="w-2.5 h-2.5 rounded-full bg-main shrink-0"></div>не мріяли про 100 000$, а досягли;</li>
+                    <li class="flex items-center gap-3"><div class="w-2.5 h-2.5 rounded-full bg-main shrink-0"></div>вийшли з боргів;</li>
+                    <li class="flex items-center gap-3"><div class="w-2.5 h-2.5 rounded-full bg-main shrink-0"></div>збудували подушку безпеки;</li>
+                    <li class="flex items-center gap-3"><div class="w-2.5 h-2.5 rounded-full bg-main shrink-0"></div>навчилися не просто інвестувати, а робити це системно.</li>
                 </ul>
 
-                <p class="text-lg font-bold text-white mb-4">Я не розповідаю:</p>
-                <ul class="space-y-2 mb-8 text-gray-200">
-                    <li class="flex items-center gap-2"><i data-lucide="x" class="text-white/50 w-5 h-5 shrink-0"></i> казок про «легкі гроші»,</li>
-                    <li class="flex items-center gap-2"><i data-lucide="x" class="text-white/50 w-5 h-5 shrink-0"></i> лайфхаків для лінивих,</li>
-                    <li class="flex items-center gap-2"><i data-lucide="x" class="text-white/50 w-5 h-5 shrink-0"></i> схем «зроби 10 000$ за 10 днів».</li>
+                <p class="text-xl font-bold text-black mb-5">Я не розповідаю:</p>
+                <ul class="space-y-3 mb-10 text-lg text-gray-800 font-medium">
+                    <li class="flex items-center gap-3"><i data-lucide="x" class="text-main w-6 h-6 shrink-0"></i> казок про «легкі гроші»,</li>
+                    <li class="flex items-center gap-3"><i data-lucide="x" class="text-main w-6 h-6 shrink-0"></i> лайфхаків для лінивих,</li>
+                    <li class="flex items-center gap-3"><i data-lucide="x" class="text-main w-6 h-6 shrink-0"></i> схем «зроби 10 000$ за 10 днів».</li>
                 </ul>
 
-                <div class="bg-black/20 backdrop-blur-md p-6 rounded-xl border border-white/10 shadow-lg">
-                    <p class="text-xl font-bold italic text-white drop-shadow-sm">"Я розповідаю те, що працює насправді, — і перевірено на десятках людей."</p>
+                <div class="bg-white/50 backdrop-blur-md p-6 rounded-2xl border border-black/10 shadow-lg">
+                    <p class="text-xl font-bold italic text-black">"Я розповідаю те, що працює насправді, — і перевірено на десятках людей."</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 5. REVIEWS SECTION -->
-    <section class="bg-texture-red text-white py-12 md:py-20 px-0 overflow-hidden relative border-y border-white/10">
-        <div class="max-w-5xl mx-auto px-5 relative z-10">
-            <h2 class="font-heading heading-style text-4xl text-center text-white font-bold mb-2 drop-shadow-md">Відгуки</h2>
-            <p class="text-center text-gray-300 font-bold tracking-widest uppercase text-sm mb-10 animate-bounce">
+    <!-- 5. REVIEWS SECTION (ШОКОЛАД) -->
+    <section class="py-16 md:py-24 px-0 overflow-hidden relative">
+        <!-- Фон Шоколад -->
+        <div class="absolute inset-0 z-0 bg-[url('chocolate.jpg')] bg-cover bg-center"></div>
+        <div class="absolute inset-0 bg-[#2d1205]/40 z-10"></div>
+
+        <div class="max-w-5xl mx-auto px-5 relative z-20">
+            <h2 class="font-heading heading-style text-4xl text-center text-white font-bold mb-4 drop-shadow-md">Відгуки</h2>
+            <!-- Текст в один рядок завдяки whitespace-nowrap та дрібному шрифту на мобільному -->
+            <p class="text-center text-white/80 font-bold tracking-widest uppercase text-[10px] sm:text-xs md:text-sm mb-12 animate-bounce whitespace-nowrap">
                 <i data-lucide="chevron-right" class="inline w-4 h-4 mr-1"></i> Гортайте в бік, щоб переглянути <i data-lucide="chevron-left" class="inline w-4 h-4 ml-1"></i>
             </p>
         </div>
 
         <!-- Swiper -->
-        <div class="swiper mySwiper pl-5 relative z-10">
+        <div class="swiper mySwiper pl-5 relative z-20 pb-10">
             <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="photo_2026-03-03_09-23-19.jpg" alt="Відгук 1" onerror="this.src='https://placehold.co/400x600/ddd/4E0000?text=Відгук+1'" class="shadow-2xl rounded-xl border border-white/10"></div>
-                <div class="swiper-slide"><img src="photo_2026-03-03_09-23-32.jpg" alt="Відгук 2" onerror="this.src='https://placehold.co/400x600/ddd/4E0000?text=Відгук+2'" class="shadow-2xl rounded-xl border border-white/10"></div>
-                <div class="swiper-slide"><img src="photo_2026-03-03_09-23-36.jpg" alt="Відгук 3" onerror="this.src='https://placehold.co/400x600/ddd/4E0000?text=Відгук+3'" class="shadow-2xl rounded-xl border border-white/10"></div>
-                <div class="swiper-slide"><img src="photo_2026-03-03_09-23-40.jpg" alt="Відгук 4" onerror="this.src='https://placehold.co/400x600/ddd/4E0000?text=Відгук+4'" class="shadow-2xl rounded-xl border border-white/10"></div>
-                <div class="swiper-slide"><img src="photo_2026-03-03_09-23-44.jpg" alt="Відгук 5" onerror="this.src='https://placehold.co/400x600/ddd/4E0000?text=Відгук+5'" class="shadow-2xl rounded-xl border border-white/10"></div>
-                <div class="swiper-slide"><img src="photo_2026-03-03_09-23-47.jpg" alt="Відгук 6" onerror="this.src='https://placehold.co/400x600/ddd/4E0000?text=Відгук+6'" class="shadow-2xl rounded-xl border border-white/10"></div>
+                <div class="swiper-slide"><img src="photo_2026-03-03_09-23-19.jpg" alt="Відгук 1" onerror="this.src='https://placehold.co/400x600/3a1c0d/FFFFFF?text=Відгук+1'" class="shadow-[0_15px_30px_rgba(0,0,0,0.5)] rounded-xl border border-white/20"></div>
+                <div class="swiper-slide"><img src="photo_2026-03-03_09-23-32.jpg" alt="Відгук 2" onerror="this.src='https://placehold.co/400x600/3a1c0d/FFFFFF?text=Відгук+2'" class="shadow-[0_15px_30px_rgba(0,0,0,0.5)] rounded-xl border border-white/20"></div>
+                <div class="swiper-slide"><img src="photo_2026-03-03_09-23-36.jpg" alt="Відгук 3" onerror="this.src='https://placehold.co/400x600/3a1c0d/FFFFFF?text=Відгук+3'" class="shadow-[0_15px_30px_rgba(0,0,0,0.5)] rounded-xl border border-white/20"></div>
+                <div class="swiper-slide"><img src="photo_2026-03-03_09-23-40.jpg" alt="Відгук 4" onerror="this.src='https://placehold.co/400x600/3a1c0d/FFFFFF?text=Відгук+4'" class="shadow-[0_15px_30px_rgba(0,0,0,0.5)] rounded-xl border border-white/20"></div>
+                <div class="swiper-slide"><img src="photo_2026-03-03_09-23-44.jpg" alt="Відгук 5" onerror="this.src='https://placehold.co/400x600/3a1c0d/FFFFFF?text=Відгук+5'" class="shadow-[0_15px_30px_rgba(0,0,0,0.5)] rounded-xl border border-white/20"></div>
+                <div class="swiper-slide"><img src="photo_2026-03-03_09-23-47.jpg" alt="Відгук 6" onerror="this.src='https://placehold.co/400x600/3a1c0d/FFFFFF?text=Відгук+6'" class="shadow-[0_15px_30px_rgba(0,0,0,0.5)] rounded-xl border border-white/20"></div>
                 
-                <!-- Нові 6 відгуків (змініть src на ваші реальні фотографії) -->
-                <div class="swiper-slide"><img src="photo_2026-03-04_21-36-26.jpg" alt="Відгук 7" onerror="this.src='https://placehold.co/400x600/ddd/4E0000?text=Відгук+7'" class="shadow-2xl rounded-xl border border-white/10"></div>
-                <div class="swiper-slide"><img src="photo_2026-03-04_21-36-26 (2).jpg" alt="Відгук 8" onerror="this.src='https://placehold.co/400x600/ddd/4E0000?text=Відгук+8'" class="shadow-2xl rounded-xl border border-white/10"></div>
-                <div class="swiper-slide"><img src="photo_2026-03-04_21-36-27.jpg" alt="Відгук 9" onerror="this.src='https://placehold.co/400x600/ddd/4E0000?text=Відгук+9'" class="shadow-2xl rounded-xl border border-white/10"></div>
-                <div class="swiper-slide"><img src="photo_2026-03-04_21-36-27 (2).jpg" alt="Відгук 10" onerror="this.src='https://placehold.co/400x600/ddd/4E0000?text=Відгук+10'" class="shadow-2xl rounded-xl border border-white/10"></div>
-                <div class="swiper-slide"><img src="photo_2026-03-04_21-36-28 (2).jpg" alt="Відгук 12" onerror="this.src='https://placehold.co/400x600/ddd/4E0000?text=Відгук+12'" class="shadow-2xl rounded-xl border border-white/10"></div>
+                <!-- Нові 6 відгуків -->
+                <div class="swiper-slide"><img src="review_7.jpg" alt="Відгук 7" onerror="this.src='https://placehold.co/400x600/3a1c0d/FFFFFF?text=Відгук+7'" class="shadow-[0_15px_30px_rgba(0,0,0,0.5)] rounded-xl border border-white/20"></div>
+                <div class="swiper-slide"><img src="review_8.jpg" alt="Відгук 8" onerror="this.src='https://placehold.co/400x600/3a1c0d/FFFFFF?text=Відгук+8'" class="shadow-[0_15px_30px_rgba(0,0,0,0.5)] rounded-xl border border-white/20"></div>
+                <div class="swiper-slide"><img src="review_9.jpg" alt="Відгук 9" onerror="this.src='https://placehold.co/400x600/3a1c0d/FFFFFF?text=Відгук+9'" class="shadow-[0_15px_30px_rgba(0,0,0,0.5)] rounded-xl border border-white/20"></div>
+                <div class="swiper-slide"><img src="review_10.jpg" alt="Відгук 10" onerror="this.src='https://placehold.co/400x600/3a1c0d/FFFFFF?text=Відгук+10'" class="shadow-[0_15px_30px_rgba(0,0,0,0.5)] rounded-xl border border-white/20"></div>
+                <div class="swiper-slide"><img src="review_11.jpg" alt="Відгук 11" onerror="this.src='https://placehold.co/400x600/3a1c0d/FFFFFF?text=Відгук+11'" class="shadow-[0_15px_30px_rgba(0,0,0,0.5)] rounded-xl border border-white/20"></div>
+                <div class="swiper-slide"><img src="review_12.jpg" alt="Відгук 12" onerror="this.src='https://placehold.co/400x600/3a1c0d/FFFFFF?text=Відгук+12'" class="shadow-[0_15px_30px_rgba(0,0,0,0.5)] rounded-xl border border-white/20"></div>
             </div>
-            <div class="swiper-pagination mt-8 relative"></div>
+            <div class="swiper-pagination mt-10 relative"></div>
         </div>
     </section>
 
-    <!-- 6. FINAL CTA SECTION -->
-    <section class="bg-texture-red text-white py-16 md:py-24 px-5 text-center relative">
-        <div class="max-w-4xl mx-auto relative z-10">
-            <h2 class="font-heading heading-style text-3xl md:text-5xl font-bold mb-10 leading-tight drop-shadow-lg">
-                Цей урок - про інструменти, які працюють вже зараз та виведуть ваш капітал на новий рівень
+    <!-- 6. FINAL CTA SECTION (ПАДАЮЧІ ДОЛАРИ) -->
+    <section class="py-20 md:py-32 px-5 text-center relative overflow-hidden">
+        <!-- Фон Падаючі долари -->
+        <div class="absolute inset-0 z-0 bg-[url('falling-dollars.jpg')] bg-cover bg-center"></div>
+        <div class="absolute inset-0 bg-[#4E0000]/85 z-10"></div>
+
+        <div class="max-w-4xl mx-auto relative z-20">
+            <h2 class="font-heading heading-style text-3xl md:text-5xl text-white font-bold mb-12 leading-tight drop-shadow-2xl">
+                Цей урок - про інструменти, які працюють вже зараз та виведуть ваш <span class="text-gold">капітал</span> на новий рівень
             </h2>
-            <button onclick="openModal()" class="w-full md:w-auto bg-white text-main font-bold text-2xl py-5 px-12 rounded-full btn-pulse uppercase font-heading tracking-wider shadow-2xl">
+            <button onclick="openModal()" class="w-full md:w-auto bg-white text-main font-bold text-2xl py-5 px-14 rounded-full btn-pulse uppercase font-heading tracking-wider shadow-[0_10px_30px_rgba(0,0,0,0.5)] hover:scale-105 transition-transform">
                 Дивитись урок
             </button>
         </div>
@@ -362,46 +375,46 @@
         <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeModal()"></div>
         
         <!-- Modal Content -->
-        <div class="bg-white w-full max-w-md mx-4 rounded-2xl shadow-2xl relative z-10 transform scale-95 transition-transform duration-300" id="modalBox">
-            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-black">
-                <i data-lucide="x" class="w-6 h-6"></i>
+        <div class="bg-white w-full max-w-md mx-4 rounded-3xl shadow-2xl relative z-10 transform scale-95 transition-transform duration-300" id="modalBox">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-black transition-colors">
+                <i data-lucide="x" class="w-7 h-7"></i>
             </button>
             
-            <div class="p-8">
-                <h3 class="font-heading heading-style text-2xl font-bold text-center text-main mb-2">Отримайте доступ до уроку</h3>
-                <p class="text-center text-gray-500 mb-6 text-sm">Заповніть форму нижче, щоб ми відправили вам доступ</p>
+            <div class="p-8 md:p-10">
+                <h3 class="font-heading heading-style text-2xl font-extrabold text-center text-main mb-3">Отримайте доступ до уроку</h3>
+                <p class="text-center text-gray-500 mb-8 text-sm font-medium">Заповніть форму нижче, щоб ми відправили вам доступ</p>
                 
-                <form id="leadForm" class="space-y-4">
+                <form id="leadForm" class="space-y-5">
                     <div>
-                        <label class="block text-sm font-bold text-gray-700 mb-1">Ваше ім’я</label>
+                        <label class="block text-sm font-bold text-gray-800 mb-2">Ваше ім’я</label>
                         <div class="relative">
                             <i data-lucide="user" class="absolute left-4 top-4 w-5 h-5 text-gray-400"></i>
-                            <input type="text" id="name" required placeholder="Введіть ім'я" class="input-field pl-12 shadow-sm">
+                            <input type="text" id="name" required placeholder="Введіть ім'я" class="input-field pl-12 shadow-sm bg-gray-50 border-gray-200">
                         </div>
                     </div>
                     
                     <div>
-                        <label class="block text-sm font-bold text-gray-700 mb-1">Ваш нік в Telegram</label>
+                        <label class="block text-sm font-bold text-gray-800 mb-2">Ваш нік в Telegram</label>
                         <div class="relative">
                             <i data-lucide="send" class="absolute left-4 top-4 w-5 h-5 text-gray-400"></i>
-                            <input type="text" id="telegram" required placeholder="@username" class="input-field pl-12 shadow-sm">
+                            <input type="text" id="telegram" required placeholder="@username" class="input-field pl-12 shadow-sm bg-gray-50 border-gray-200">
                         </div>
                     </div>
 
                     <div>
-                        <label class="block text-sm font-bold text-gray-700 mb-1">Ваш номер телефону</label>
-                        <div class="shadow-sm rounded-lg">
-                             <input type="tel" id="phone" required class="input-field">
+                        <label class="block text-sm font-bold text-gray-800 mb-2">Ваш номер телефону</label>
+                        <div class="shadow-sm rounded-lg bg-gray-50 border-gray-200">
+                             <input type="tel" id="phone" required class="input-field bg-gray-50">
                         </div>
-                        <p id="phoneError" class="text-red-500 text-xs mt-1 hidden font-bold">Невірний формат номера</p>
+                        <p id="phoneError" class="text-red-500 text-xs mt-2 hidden font-bold">Невірний формат номера</p>
                     </div>
 
-                    <button type="submit" id="submitBtn" class="w-full bg-main text-white font-heading font-bold text-lg py-4 rounded-xl hover:bg-mainDark transition-colors mt-4 uppercase tracking-wider relative shadow-md btn-pulse">
+                    <button type="submit" id="submitBtn" class="w-full bg-main text-white font-heading font-bold text-lg py-4 rounded-xl hover:bg-mainDark transition-colors mt-6 uppercase tracking-wider relative shadow-lg shadow-main/30 btn-pulse">
                         <span id="btnText">ОТРИМАТИ УРОК</span>
                         <i data-lucide="loader-2" id="btnLoader" class="w-6 h-6 animate-spin mx-auto hidden"></i>
                     </button>
                     
-                    <p class="text-xs text-center text-gray-400 mt-3">Ваші дані надійно захищені</p>
+                    <p class="text-xs text-center text-gray-400 mt-4 font-medium"><i data-lucide="lock" class="w-3 h-3 inline pb-0.5"></i> Ваші дані надійно захищені</p>
                 </form>
             </div>
         </div>
@@ -443,7 +456,7 @@
             slidesPerView: 1.2,
             spaceBetween: 20,
             centeredSlides: false,
-            loop: true, // <--- Додано для зациклення слайдера
+            loop: true, 
             pagination: {
                 el: ".swiper-pagination",
                 clickable: true,
