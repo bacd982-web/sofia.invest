@@ -172,10 +172,10 @@
         </div>
     </header>
 
-    <!-- 2. PAIN POINTS SECTION (ФОН ЛЕОПАРД) -->
+    <!-- 2. PAIN POINTS SECTION (ФОН ТИГР) -->
     <section class="pt-8 pb-12 md:pt-14 md:pb-16 px-5 text-white relative overflow-hidden">
-        <!-- Фон Леопард: прибрано bg-fixed, щоб картинка не збільшувалась на телефонах -->
-        <div class="absolute inset-0 z-0 bg-cover bg-center" style="background-image: url('leopard.jpg');"></div>
+        <!-- Фон Тигр через атрибут style -->
+        <div class="absolute inset-0 z-0 bg-cover bg-center" style="background-image: url('tiger.jpg');"></div>
         <!-- Темне затемнення -->
         <div class="absolute inset-0 bg-black/75 z-10"></div>
 
@@ -232,7 +232,7 @@
 
     <!-- 3. RESULTS SECTION (ФОН ЗЕБРА) -->
     <section class="relative py-12 md:py-16 px-5 text-white overflow-hidden">
-        <!-- Фон Зебра: прибрано bg-fixed, щоб картинка не збільшувалась на телефонах -->
+        <!-- Фон Зебра через атрибут style -->
         <div class="absolute inset-0 z-0 bg-cover bg-center" style="background-image: url('zebra.jpg');"></div>
         <!-- Градієнтне затемнення -->
         <div class="absolute inset-0 bg-black/75 z-10"></div>
@@ -450,7 +450,7 @@
         svgIcons.forEach(icon => svgObserver.observe(icon));
         // ----------------------------------------------------
 
-        // Init Swiper
+        // Init Swiper 
         var swiper = new Swiper(".mySwiper", {
             slidesPerView: 1.2,
             spaceBetween: 20,
