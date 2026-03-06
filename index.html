@@ -97,14 +97,30 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
 
-        /* Form styling */
+        /* Form styling & Validation Animations */
         .iti { width: 100%; }
         .input-field {
             width: 100%; padding: 16px; border: 1px solid #ddd; border-radius: 8px;
-            font-size: 16px; transition: border-color 0.3s;
+            font-size: 16px; transition: all 0.3s;
         }
         .input-field:focus { outline: none; border-color: #4E0000; box-shadow: 0 0 0 3px rgba(78,0,0,0.1); }
         .iti__flag-container { z-index: 10; }
+
+        @keyframes shake-red {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-5px); }
+            40%, 80% { transform: translateX(5px); }
+        }
+        .input-error {
+            animation: shake-red 0.5s cubic-bezier(.36,.07,.19,.97) both;
+            border-color: #ef4444 !important;
+            box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.2) !important;
+            background-color: #fef2f2 !important;
+            color: #b91c1c !important;
+        }
+        .input-error::placeholder {
+            color: #fca5a5 !important;
+        }
         
         /* Swiper Fixes */
         .swiper-slide { height: auto; display: flex; justify-content: center; }
@@ -135,7 +151,8 @@
     <!-- 1. HERO SECTION -->
     <header class="relative text-white py-12 md:py-20 px-5 overflow-hidden min-h-[85vh] flex items-center justify-center bg-[#4E0000]">
         <div class="absolute inset-0 z-0 bg-transparent">
-            <img src="IMG_5574.PNG" alt="Софія Фединяк" class="w-full h-full object-cover object-top opacity-100" onerror="this.src='https://placehold.co/1200x800/4E0000/FFFFFF?text=ФОТО'">
+            <!-- Fetchpriority="high" для найшвидшого завантаження головного екрану -->
+            <img src="IMG_5574.PNG" alt="Софія Фединяк" fetchpriority="high" class="w-full h-full object-cover object-top opacity-100" onerror="this.src='https://placehold.co/1200x800/4E0000/FFFFFF?text=ФОТО'">
         </div>
         <div class="absolute inset-x-0 bottom-0 h-3/4 z-10 bg-gradient-to-t from-[#000000] via-[#000000]/60 to-transparent pointer-events-none"></div>
 
@@ -144,7 +161,7 @@
             <div class="relative mb-5 max-w-3xl w-full animate-on-load" style="animation-delay: 0.1s;">
                 <h1 class="font-heading heading-style text-2xl md:text-4xl lg:text-5xl font-bold leading-tight text-white text-shadow-strong relative z-10">
                     Як накопичити перш<span class="relative inline-block">
-                        <img src="IMG_5575.PNG" alt="Бантик із доларів" class="absolute bottom-[60%] left-1/2 -translate-x-1/2 w-20 md:w-24 drop-shadow-2xl z-0 hover:scale-105 transition-transform duration-300 pointer-events-none" style="max-width: unset;" onerror="this.style.display='none'">
+                        <img src="IMG_5575.PNG" alt="Бантик із доларів" fetchpriority="high" class="absolute bottom-[60%] left-1/2 -translate-x-1/2 w-20 md:w-24 drop-shadow-2xl z-0 hover:scale-105 transition-transform duration-300 pointer-events-none" style="max-width: unset;" onerror="this.style.display='none'">
                         <span class="relative z-10">і</span>
                     </span> 100 000$<br>
                     <span class="text-xl md:text-3xl mt-2 block font-bold">та стабільно отримувати пасивний дохід завдяки інвестиціям</span>
@@ -172,11 +189,9 @@
         </div>
     </header>
 
-    <!-- 2. PAIN POINTS SECTION (ФОН Golden Cash Flow Explosion.jpg) -->
+    <!-- 2. PAIN POINTS SECTION (ФОН ТИГР) -->
     <section class="pt-8 pb-12 md:pt-14 md:pb-16 px-5 text-white relative overflow-hidden -mt-[1px] z-10">
-        <!-- Фон через атрибут style -->
-        <div class="absolute inset-0 z-0 bg-cover bg-center" style="background-image: url('Golden Cash Flow Explosion.jpg');"></div>
-        <!-- Темне затемнення для покращення читабельності -->
+        <div class="absolute inset-0 z-0 bg-cover bg-center" style="background-image: url('tiger.jpg');" loading="lazy"></div>
         <div class="absolute inset-0 bg-black/75 z-10"></div>
 
         <div class="max-w-3xl mx-auto relative z-20">
@@ -184,7 +199,7 @@
                 Знайома ситуація?
             </h2>
             
-            <p class="text-xl text-center mb-8 font-semibold text-gray-200 opacity-0 translate-y-4 transition-all duration-700 ease-out pain-point-item text-shadow-strong">
+            <p class="text-xl text-center mb-8 font-semibold text-gray-200 opacity-0 translate-y-4 transition-all duration-700 ease-out pain-point-item">
                 Ви прекрасно заробляєте, але:
             </p>
             
@@ -216,7 +231,6 @@
             </div>
 
             <div class="luxury-glass-dark p-8 rounded-2xl mb-10 opacity-0 translate-y-4 transition-all duration-700 ease-out pain-point-item relative overflow-hidden">
-                <!-- Декоративна лінія зліва біла -->
                 <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-white/50"></div>
                 <p class="text-xl mb-4 leading-relaxed font-medium">Ви багато працюєте, намагаєтесь зекономити, але все одно: <br><b class="text-white font-bold tracking-wide">гроші просто прослизають крізь пальці.</b></p>
                 <p class="text-lg text-gray-300">Можливо, ви вже пробували «зберігати» — але виходить не більше ніж 50–100 $ на місяць… Або навіть менше.</p>
@@ -230,16 +244,14 @@
         </div>
     </section>
 
-    <!-- 3. RESULTS SECTION (ФОН zebra.jpg) -->
+    <!-- 3. RESULTS SECTION (ФОН ЗЕБРА) -->
     <section class="relative py-12 md:py-16 px-5 text-white overflow-hidden">
-        <!-- Фон через атрибут style -->
-        <div class="absolute inset-0 z-0 bg-cover bg-center" style="background-image: url('zebra.jpg');"></div>
-        <!-- Темне затемнення -->
+        <div class="absolute inset-0 z-0 bg-cover bg-center" style="background-image: url('zebra.jpg');" loading="lazy"></div>
         <div class="absolute inset-0 bg-black/75 z-10"></div>
 
         <div class="max-w-4xl mx-auto relative z-20">
             <h2 class="font-heading heading-style text-3xl md:text-4xl text-center text-white font-bold mb-6 drop-shadow-lg">Результат після уроку</h2>
-            <p class="text-center text-lg md:text-xl mb-12 text-gray-200 max-w-2xl mx-auto font-medium text-shadow-strong">Після цього уроку ти отримаєш не абстрактні мрії — ти отримаєш план із практичними цифрами й діями:</p>
+            <p class="text-center text-lg md:text-xl mb-12 text-gray-200 max-w-2xl mx-auto font-medium">Після цього уроку ти отримаєш не абстрактні мрії — ти отримаєш план із практичними цифрами й діями:</p>
 
             <div class="space-y-6 mb-14">
                 <div class="luxury-glass-dark flex gap-5 p-6 rounded-2xl transition opacity-0 translate-y-4 duration-700 ease-out result-card-item">
@@ -280,17 +292,15 @@
         </div>
     </section>
 
-    <!-- 4. SPEAKER SECTION (ФОН Без названия (3).jpg) -->
+    <!-- 4. SPEAKER SECTION (СВІТЛЕ ХУТРО) -->
     <section class="py-12 md:py-16 px-5 relative overflow-hidden">
-        <!-- Фон через атрибут style -->
-        <div class="absolute inset-0 z-0 bg-cover bg-center" style="background-image: url('Без названия (3).jpg');"></div>
-        <!-- Світле затемнення для чорного тексту -->
+        <div class="absolute inset-0 z-0 bg-cover bg-center bg-fixed" style="background-image: url('light-fur.jpg');" loading="lazy"></div>
         <div class="absolute inset-0 bg-[#ffffff]/60 z-10 backdrop-blur-[2px]"></div>
 
         <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-10 md:gap-16 relative z-20">
             <!-- ФОТО СПІКЕРА -->
             <div class="w-full md:w-5/12">
-                <img src="photo_2026-03-03_10-14-10.jpg" alt="Софія Фединяк" class="rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.2)] border border-black/5 w-full object-cover aspect-[3/4]" onerror="this.src='https://placehold.co/600x800/4E0000/FFFFFF?text=Фото+Софії'">
+                <img src="photo_2026-03-03_10-14-10.jpg" alt="Софія Фединяк" loading="lazy" class="rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.2)] border border-black/5 w-full object-cover aspect-[3/4]" onerror="this.src='https://placehold.co/600x800/4E0000/FFFFFF?text=Фото+Софії'">
             </div>
             
             <div class="w-full md:w-7/12 text-black">
@@ -312,7 +322,6 @@
                     <li class="flex items-center gap-3"><i data-lucide="x" class="text-main w-6 h-6 shrink-0"></i> схем «зроби 10 000$ за 10 днів».</li>
                 </ul>
 
-                <!-- Світла матова плашка -->
                 <div class="luxury-glass-light p-6 rounded-2xl">
                     <p class="text-xl font-bold italic text-black">"Я розповідаю те, що працює насправді, — і перевірено на десятках людей."</p>
                 </div>
@@ -320,17 +329,14 @@
         </div>
     </section>
 
-    <!-- 5. REVIEWS SECTION (ФОН chocolate.jpg) -->
+    <!-- 5. REVIEWS SECTION (ШОКОЛАД) -->
     <section class="py-12 md:py-16 px-0 overflow-hidden relative">
-        <!-- Фон через атрибут style -->
-        <div class="absolute inset-0 z-0 bg-cover bg-center" style="background-image: url('chocolate.jpg');"></div>
-        <!-- Легке тепле затемнення -->
-        <div class="absolute inset-0 bg-[#2d1205]/60 z-10"></div>
+        <div class="absolute inset-0 z-0 bg-cover bg-center" style="background-image: url('chocolate.jpg');" loading="lazy"></div>
+        <div class="absolute inset-0 bg-[#2d1205]/40 z-10"></div>
 
         <div class="max-w-5xl mx-auto px-5 relative z-20">
             <h2 class="font-heading heading-style text-4xl text-center text-white font-bold mb-4 drop-shadow-lg">Відгуки</h2>
-            <!-- Текст в один рядок: whitespace-nowrap та дрібний шрифт -->
-            <p class="text-center text-white/80 font-bold tracking-widest uppercase text-[11px] sm:text-sm mb-12 animate-bounce whitespace-nowrap text-shadow-strong">
+            <p class="text-center text-white/80 font-bold tracking-widest uppercase text-[11px] sm:text-sm mb-12 animate-bounce whitespace-nowrap">
                 <i data-lucide="chevron-right" class="inline w-4 h-4 mr-1"></i> Гортайте в бік, щоб переглянути <i data-lucide="chevron-left" class="inline w-4 h-4 ml-1"></i>
             </p>
         </div>
@@ -338,32 +344,29 @@
         <!-- Swiper -->
         <div class="swiper mySwiper pl-5 relative z-20 pb-10">
             <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="photo_2026-03-03_09-23-19.jpg" alt="Відгук 1" onerror="this.src='https://placehold.co/400x600/3a1c0d/FFFFFF?text=Відгук+1'" class="shadow-[0_15px_30px_rgba(0,0,0,0.5)] rounded-xl border border-white/10"></div>
-                <div class="swiper-slide"><img src="photo_2026-03-03_09-23-32.jpg" alt="Відгук 2" onerror="this.src='https://placehold.co/400x600/3a1c0d/FFFFFF?text=Відгук+2'" class="shadow-[0_15px_30px_rgba(0,0,0,0.5)] rounded-xl border border-white/10"></div>
-                <div class="swiper-slide"><img src="photo_2026-03-03_09-23-36.jpg" alt="Відгук 3" onerror="this.src='https://placehold.co/400x600/3a1c0d/FFFFFF?text=Відгук+3'" class="shadow-[0_15px_30px_rgba(0,0,0,0.5)] rounded-xl border border-white/10"></div>
-                <div class="swiper-slide"><img src="photo_2026-03-03_09-23-40.jpg" alt="Відгук 4" onerror="this.src='https://placehold.co/400x600/3a1c0d/FFFFFF?text=Відгук+4'" class="shadow-[0_15px_30px_rgba(0,0,0,0.5)] rounded-xl border border-white/10"></div>
-                <div class="swiper-slide"><img src="photo_2026-03-03_09-23-44.jpg" alt="Відгук 5" onerror="this.src='https://placehold.co/400x600/3a1c0d/FFFFFF?text=Відгук+5'" class="shadow-[0_15px_30px_rgba(0,0,0,0.5)] rounded-xl border border-white/10"></div>
-                <div class="swiper-slide"><img src="photo_2026-03-03_09-23-47.jpg" alt="Відгук 6" onerror="this.src='https://placehold.co/400x600/3a1c0d/FFFFFF?text=Відгук+6'" class="shadow-[0_15px_30px_rgba(0,0,0,0.5)] rounded-xl border border-white/10"></div>
-                
-                <div class="swiper-slide"><img src="photo_2026-03-04_21-36-26.jpg" alt="Відгук 7" onerror="this.src='https://placehold.co/400x600/3a1c0d/FFFFFF?text=Відгук+7'" class="shadow-[0_15px_30px_rgba(0,0,0,0.5)] rounded-xl border border-white/10"></div>
-                <div class="swiper-slide"><img src="photo_2026-03-04_21-36-26 (2).jpg" alt="Відгук 8" onerror="this.src='https://placehold.co/400x600/3a1c0d/FFFFFF?text=Відгук+8'" class="shadow-[0_15px_30px_rgba(0,0,0,0.5)] rounded-xl border border-white/10"></div>
-                <div class="swiper-slide"><img src="photo_2026-03-04_21-36-27.jpg" alt="Відгук 9" onerror="this.src='https://placehold.co/400x600/3a1c0d/FFFFFF?text=Відгук+9'" class="shadow-[0_15px_30px_rgba(0,0,0,0.5)] rounded-xl border border-white/10"></div>
-                <div class="swiper-slide"><img src="photo_2026-03-04_21-36-27 (2).jpg" alt="Відгук 10" onerror="this.src='https://placehold.co/400x600/3a1c0d/FFFFFF?text=Відгук+10'" class="shadow-[0_15px_30px_rgba(0,0,0,0.5)] rounded-xl border border-white/10"></div>
-                <div class="swiper-slide"><img src="photo_2026-03-04_21-36-28 (2).jpg" alt="Відгук 12" onerror="this.src='https://placehold.co/400x600/3a1c0d/FFFFFF?text=Відгук+12'" class="shadow-[0_15px_30px_rgba(0,0,0,0.5)] rounded-xl border border-white/10"></div>
+                <div class="swiper-slide"><img src="photo_2026-03-03_09-23-19.jpg" loading="lazy" alt="Відгук 1" onerror="this.src='https://placehold.co/400x600/3a1c0d/FFFFFF?text=Відгук+1'" class="shadow-[0_15px_30px_rgba(0,0,0,0.5)] rounded-xl border border-white/10"></div>
+                <div class="swiper-slide"><img src="photo_2026-03-03_09-23-32.jpg" loading="lazy" alt="Відгук 2" onerror="this.src='https://placehold.co/400x600/3a1c0d/FFFFFF?text=Відгук+2'" class="shadow-[0_15px_30px_rgba(0,0,0,0.5)] rounded-xl border border-white/10"></div>
+                <div class="swiper-slide"><img src="photo_2026-03-03_09-23-36.jpg" loading="lazy" alt="Відгук 3" onerror="this.src='https://placehold.co/400x600/3a1c0d/FFFFFF?text=Відгук+3'" class="shadow-[0_15px_30px_rgba(0,0,0,0.5)] rounded-xl border border-white/10"></div>
+                <div class="swiper-slide"><img src="photo_2026-03-03_09-23-40.jpg" loading="lazy" alt="Відгук 4" onerror="this.src='https://placehold.co/400x600/3a1c0d/FFFFFF?text=Відгук+4'" class="shadow-[0_15px_30px_rgba(0,0,0,0.5)] rounded-xl border border-white/10"></div>
+                <div class="swiper-slide"><img src="photo_2026-03-03_09-23-44.jpg" loading="lazy" alt="Відгук 5" onerror="this.src='https://placehold.co/400x600/3a1c0d/FFFFFF?text=Відгук+5'" class="shadow-[0_15px_30px_rgba(0,0,0,0.5)] rounded-xl border border-white/10"></div>
+                <div class="swiper-slide"><img src="photo_2026-03-03_09-23-47.jpg" loading="lazy" alt="Відгук 6" onerror="this.src='https://placehold.co/400x600/3a1c0d/FFFFFF?text=Відгук+6'" class="shadow-[0_15px_30px_rgba(0,0,0,0.5)] rounded-xl border border-white/10"></div>
+                <div class="swiper-slide"><img src="photo_2026-03-04_21-36-26.jpg" loading="lazy" alt="Відгук 7" onerror="this.src='https://placehold.co/400x600/3a1c0d/FFFFFF?text=Відгук+7'" class="shadow-[0_15px_30px_rgba(0,0,0,0.5)] rounded-xl border border-white/10"></div>
+                <div class="swiper-slide"><img src="photo_2026-03-04_21-36-26 (2).jpg" loading="lazy" alt="Відгук 8" onerror="this.src='https://placehold.co/400x600/3a1c0d/FFFFFF?text=Відгук+8'" class="shadow-[0_15px_30px_rgba(0,0,0,0.5)] rounded-xl border border-white/10"></div>
+                <div class="swiper-slide"><img src="photo_2026-03-04_21-36-27.jpg" loading="lazy" alt="Відгук 9" onerror="this.src='https://placehold.co/400x600/3a1c0d/FFFFFF?text=Відгук+9'" class="shadow-[0_15px_30px_rgba(0,0,0,0.5)] rounded-xl border border-white/10"></div>
+                <div class="swiper-slide"><img src="photo_2026-03-04_21-36-27 (2).jpg" loading="lazy" alt="Відгук 10" onerror="this.src='https://placehold.co/400x600/3a1c0d/FFFFFF?text=Відгук+10'" class="shadow-[0_15px_30px_rgba(0,0,0,0.5)] rounded-xl border border-white/10"></div>
+                <div class="swiper-slide"><img src="photo_2026-03-04_21-36-28 (2).jpg" loading="lazy" alt="Відгук 12" onerror="this.src='https://placehold.co/400x600/3a1c0d/FFFFFF?text=Відгук+12'" class="shadow-[0_15px_30px_rgba(0,0,0,0.5)] rounded-xl border border-white/10"></div>
             </div>
             <div class="swiper-pagination mt-10 relative"></div>
         </div>
     </section>
 
-    <!-- 6. FINAL CTA SECTION (ФОН dollars.jpg) -->
+    <!-- 6. FINAL CTA SECTION (ПАДАЮЧІ ДОЛАРИ) -->
     <section class="py-14 md:py-24 px-5 text-center relative overflow-hidden">
-        <!-- Фон через атрибут style -->
-        <div class="absolute inset-0 z-0 bg-cover bg-center" style="background-image: url('dollars.jpg');"></div>
-        <!-- Темне затемнення -->
+        <div class="absolute inset-0 z-0 bg-cover bg-center" style="background-image: url('dollars.jpg');" loading="lazy"></div>
         <div class="absolute inset-0 bg-black/80 z-10"></div>
 
         <div class="max-w-4xl mx-auto relative z-20">
-            <h2 class="font-heading heading-style text-3xl md:text-5xl text-white font-bold mb-12 leading-tight drop-shadow-2xl text-shadow-strong">
+            <h2 class="font-heading heading-style text-3xl md:text-5xl text-white font-bold mb-12 leading-tight drop-shadow-2xl">
                 Цей урок - про інструменти, які працюють вже зараз та виведуть ваш <span class="text-white">капітал</span> на новий рівень
             </h2>
             <button onclick="openModal()" class="w-full md:w-auto bg-white text-main font-bold text-2xl py-5 px-14 rounded-full btn-pulse uppercase font-heading tracking-wider shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:scale-105 transition-transform">
@@ -375,7 +378,7 @@
     <!-- POPUP MODAL -->
     <div id="leadModal" class="fixed inset-0 z-50 flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
         <!-- Backdrop -->
-        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeModal()"></div>
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-md" onclick="closeModal()"></div>
         
         <!-- Modal Content -->
         <div class="bg-white w-full max-w-md mx-4 rounded-3xl shadow-2xl relative z-10 transform scale-95 transition-transform duration-300" id="modalBox">
@@ -387,20 +390,12 @@
                 <h3 class="font-heading heading-style text-2xl font-extrabold text-center text-main mb-3">Отримайте доступ до уроку</h3>
                 <p class="text-center text-gray-500 mb-8 text-sm font-medium">Заповніть форму нижче, щоб ми відправили вам доступ</p>
                 
-                <form id="leadForm" class="space-y-5">
+                <form id="leadForm" class="space-y-5" novalidate>
                     <div>
                         <label class="block text-sm font-bold text-gray-800 mb-2">Ваше ім’я</label>
                         <div class="relative">
                             <i data-lucide="user" class="absolute left-4 top-4 w-5 h-5 text-gray-400"></i>
-                            <input type="text" id="name" required placeholder="Введіть ім'я" class="input-field pl-12 shadow-sm bg-gray-50 border-gray-200">
-                        </div>
-                    </div>
-                    
-                    <div>
-                        <label class="block text-sm font-bold text-gray-800 mb-2">Ваш нік в Telegram</label>
-                        <div class="relative">
-                            <i data-lucide="send" class="absolute left-4 top-4 w-5 h-5 text-gray-400"></i>
-                            <input type="text" id="telegram" required placeholder="@username" class="input-field pl-12 shadow-sm bg-gray-50 border-gray-200">
+                            <input type="text" id="name" required placeholder="Введіть ім'я" class="input-field pl-12 shadow-sm bg-gray-50 border-gray-200" title="Введіть ім'я (без цифр)">
                         </div>
                     </div>
 
@@ -409,7 +404,11 @@
                         <div class="shadow-sm rounded-lg bg-gray-50 border-gray-200">
                              <input type="tel" id="phone" required class="input-field bg-gray-50">
                         </div>
-                        <p id="phoneError" class="text-red-500 text-xs mt-2 hidden font-bold">Невірний формат номера</p>
+                    </div>
+
+                    <!-- Global Error Message for Beautiful Validation -->
+                    <div id="formError" class="text-red-500 text-sm font-bold text-center mt-4 hidden opacity-0 transition-opacity duration-300">
+                        <i data-lucide="alert-triangle" class="w-4 h-4 inline pb-0.5"></i> Будь ласка, перевірте правильність введених даних. Ім'я не має містити цифр, а номер телефону повинен бути вірним.
                     </div>
 
                     <button type="submit" id="submitBtn" class="w-full bg-main text-white font-heading font-bold text-lg py-4 rounded-xl hover:bg-mainDark transition-colors mt-6 uppercase tracking-wider relative shadow-lg shadow-main/30 btn-pulse">
@@ -429,9 +428,11 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     <script>
-        // CONFIGURATION
-        const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_WEB_APP_URL';
-        const TELEGRAM_BOT_URL = 'YOUR_TELEGRAM_BOT_LINK';
+        // ==========================================
+        // CONFIGURATION (ОБОВ'ЯЗКОВО ЗМІНИТИ ТУТ)
+        // ==========================================
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzKNzELX7cQ5orPw7WygLL6KZ7w2SjwY-gawIC8D64zQ0YJt8-patLZxTMaeYVwgBND/exec';
+        const TELEGRAM_BOT_URL = 'https://sofiafeduniak-bot.tg.pulse.is';
 
         // Init Icons
         lucide.createIcons();
@@ -470,16 +471,30 @@
             }
         });
 
-        // Init Phone Input
+        // Init Phone Input with strict European validation (excluding RU and BY)
         const phoneInput = document.querySelector("#phone");
+        
+        // Список європейських країн ISO2 без 'ru' (Росія) та 'by' (Білорусь)
+        const euCountries =[
+            "al", "ad", "at", "be", "ba", "bg", "hr", "cy", "cz", "dk", "ee", "fi", "fr", "de", "gr", "hu", "is", "ie", "it", "lv", "li", "lt", "lu", "mt", "md", "mc", "me", "nl", "mk", "no", "pl", "pt", "ro", "sm", "rs", "sk", "si", "es", "se", "ch", "ua", "gb", "va", "xk"
+        ];
+
         const iti = window.intlTelInput(phoneInput, {
             utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js",
             separateDialCode: true,
             initialCountry: "auto",
+            onlyCountries: euCountries, // Дозволяємо лише вказані європейські країни
             geoIpLookup: function(callback) {
                 fetch("https://get.geojs.io/v1/ip/country.json")
                     .then(res => res.json())
-                    .then(data => callback(data.country))
+                    .then(data => {
+                        let countryCode = data.country.toLowerCase();
+                        // Запобіжник: якщо IP визначається як RU чи BY, перекидаємо на UA
+                        if (countryCode === "ru" || countryCode === "by") {
+                            countryCode = "ua";
+                        }
+                        callback(countryCode);
+                    })
                     .catch(() => callback("ua"));
             }
         });
@@ -508,6 +523,11 @@
             setTimeout(() => {
                 modal.classList.add('hidden');
             }, 300);
+            
+            // Очищення стилів помилок при закритті
+            document.getElementById('name').classList.remove('input-error');
+            document.getElementById('phone').classList.remove('input-error');
+            document.getElementById('formError').classList.add('hidden', 'opacity-0');
         }
 
         function getUTMs() {
@@ -521,26 +541,52 @@
             };
         }
 
-        // Form Submit
+        // Form Submit з покращеною візуальною валідацією та відправкою в Google Sheets
         document.getElementById('leadForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            const errorMsg = document.getElementById('phoneError');
+            let isValid = true;
+            const nameInput = document.getElementById('name');
+            const phoneInputEl = document.getElementById('phone');
+            const errorMsg = document.getElementById('formError');
+
+            // Скидаємо попередні анімації помилок для повторного запуску
+            nameInput.classList.remove('input-error');
+            phoneInputEl.classList.remove('input-error');
+
+            // Невелика затримка (reflow trick) для того, щоб анімація спрацювала повторно, якщо треба
+            void nameInput.offsetWidth;
+            void phoneInputEl.offsetWidth;
             
+            // Валідація Імені (не порожнє і без цифр)
+            const nameValue = nameInput.value.trim();
+            const hasNumbers = /\d/.test(nameValue);
+            
+            if (nameValue === "" || hasNumbers) {
+                nameInput.classList.add('input-error');
+                isValid = false;
+            }
+
+            // Валідація Телефону (через intlTelInput)
             if (!iti.isValidNumber()) {
-                phoneInput.classList.add('border-red-500');
-                errorMsg.classList.remove('hidden');
-                return;
+                phoneInputEl.classList.add('input-error');
+                isValid = false;
             }
             
-            phoneInput.classList.remove('border-red-500');
-            errorMsg.classList.add('hidden');
+            // Якщо є помилки, показуємо сповіщення і зупиняємо
+            if (!isValid) {
+                errorMsg.classList.remove('hidden');
+                setTimeout(() => errorMsg.classList.remove('opacity-0'), 10);
+                return;
+            }
+
+            // Якщо все ОК, ховаємо помилки
+            errorMsg.classList.add('hidden', 'opacity-0');
 
             const utms = getUTMs();
             const payload = {
-                name: document.getElementById('name').value,
+                name: nameValue,
                 phone: iti.getNumber(),
-                telegram: document.getElementById('telegram').value,
                 source: utms.source,
                 medium: utms.medium,
                 campaign: utms.campaign,
@@ -557,10 +603,12 @@
             submitBtn.disabled = true;
 
             try {
+                // ВІДПРАВКА ДАНИХ У GOOGLE ТАБЛИЦЮ
                 const response = await fetch(GOOGLE_SCRIPT_URL, {
                     method: 'POST',
-                    mode: 'no-cors',
-                    headers: { 'Content-Type': 'application/json' },
+                    mode: 'no-cors', // Обов'язково для Google Scripts
+                    // Зміна: text/plain використовується, щоб обійти блокування браузером (CORS preflight) 
+                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
                     body: JSON.stringify(payload)
                 });
 
@@ -568,6 +616,7 @@
                     fbq('track', 'Lead');
                 }
                 
+                // Перенаправлення до бота
                 window.location.href = TELEGRAM_BOT_URL;
                 
             } catch (err) {
@@ -578,6 +627,11 @@
                 btnLoader.classList.add('hidden');
                 submitBtn.disabled = false;
             }
+        });
+
+        // Обмеження на введення цифр в реальному часі для імені
+        document.getElementById('name').addEventListener('input', function(e) {
+            this.value = this.value.replace(/[0-9]/g, '');
         });
 
         // Анімації при скролі
