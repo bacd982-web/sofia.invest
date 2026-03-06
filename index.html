@@ -19,7 +19,9 @@
     <!-- Swiper CSS (Slider) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
-    <!-- Meta Pixel Code -->
+    <!-- ========================================== -->
+    <!-- META PIXEL CODE (НАЛАШТУВАННЯ ПІКСЕЛЯ ФБ)  -->
+    <!-- ========================================== -->
     <script>
         !function(f,b,e,v,n,t,s)
         {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -29,10 +31,16 @@
         t.src=v;s=b.getElementsByTagName(e)[0];
         s.parentNode.insertBefore(t,s)}(window, document,'script',
         'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', 'YOUR_PIXEL_ID'); // ВСТАВ СВІЙ ID ПІКСЕЛЯ ТУТ
+        
+        // ВСТАВТЕ СВІЙ ID ПІКСЕЛЯ ЗАМІСТЬ '1603339214309331' НИЖЧЕ:
+        fbq('init', 'YOUR_PIXEL_ID'); 
         fbq('track', 'PageView');
     </script>
-    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"/></noscript>
+    <noscript>
+        <!-- ТАКОЖ ВСТАВТЕ СВІЙ ID ПІКСЕЛЯ ЗАМІСТЬ '1603339214309331' НИЖЧЕ: -->
+        <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"/>
+    </noscript>
+    <!-- ========================================== -->
     
     <script>
         tailwind.config = {
@@ -512,7 +520,7 @@
             }, 10);
             
             if(typeof fbq !== 'undefined') {
-                fbq('track', 'InitiateCheckout');
+                fbq('track', 'InitiateCheckout'); // Передаємо у ФБ піксель відкриття форми
             }
         }
 
@@ -613,7 +621,7 @@
                 });
 
                 if(typeof fbq !== 'undefined') {
-                    fbq('track', 'Lead');
+                    fbq('track', 'Lead'); // Передаємо у ФБ піксель успішну реєстрацію (Лід)
                 }
                 
                 // Перенаправлення до бота
@@ -654,4 +662,3 @@
     </script>
 </body>
 </html>
-
